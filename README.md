@@ -16,6 +16,10 @@ Before running , need to config at **tcpSocketChat.m**.
 	#define HOST @"192.168.1.95"
 	#define PORT 5100
 
+## Socket Server Code From
+
+[https://gist.github.com/707146](https://gist.github.com/707146)
+
 ## Usages Library
 
 
