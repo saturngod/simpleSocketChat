@@ -2,8 +2,7 @@
 //  tcpSocketChat.h
 //  sampleNodejsChat
 //
-//  Created by Htain Lin Shwe on 15/11/12.
-//  Copyright (c) 2012 comquas. All rights reserved.
+//  Created by saturngod
 //
 
 #import <Foundation/Foundation.h>
@@ -17,6 +16,12 @@
 
 @interface tcpSocketChat : NSObject <GCDAsyncSocketDelegate>
 @property (nonatomic,assign) id<tcpSocketChatDelegate> delegate;
+
+/**
+ Init Object
+ !param host Connection HOST Name
+ !param port Connection Port Number
+ */
 
 -(id)initWithDelegate:(id)delegateObject AndSocketHost:(NSString*)host AndPort:(NSInteger)port;
 

@@ -2,8 +2,7 @@
 //  tcpSocketChat.m
 //  sampleNodejsChat
 //
-//  Created by Htain Lin Shwe on 15/11/12.
-//  Copyright (c) 2012 comquas. All rights reserved.
+//  Created by saturngod
 //
 
 #import "tcpSocketChat.h"

@@ -67,6 +67,7 @@
         [_chatSocket reconnect];
     }
 }
+
 #pragma mark - Keyboard Delegate
 -(void)keyboardWillShow:(NSNotification*)noti
 {

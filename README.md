@@ -1,4 +1,4 @@
-TCP chat with iOS using nodejs tcp socket.
+TCP chat with iOS using nodejs tcp socket. This is a demo app to show how to connect socket with iOS.
 
 ## Run server
 
