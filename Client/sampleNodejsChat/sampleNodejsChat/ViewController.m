@@ -41,10 +41,33 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    _chatSocket = [[tcpSocketChat alloc] initWithDelegate:self];
+    _chatSocket = [[tcpSocketChat alloc] initWithDelegate:self AndSocketHost:@"192.168.1.49" AndPort:5100];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
+-(IBAction)disconnect:(id)sender {
+    if([_chatSocket isConnected]) {
+        [_chatSocket disconnect];
+
+        self.logView.text = [self.logView.text stringByAppendingFormat:@"ME >> left the chat. Bye Bye!\n"];
+        [self.chatBox resignFirstResponder];
+        
+    }
+}
+
+-(void)checkConnection
+{
+    if([_chatSocket isDisconnected])
+    {
+        [_chatSocket reconnect];
+    }
+}
+#pragma mark - Keyboard Delegate
 -(void)keyboardWillShow:(NSNotification*)noti
 {
     NSDictionary *userInfo = [noti userInfo];
@@ -56,6 +79,10 @@
     CGRect keyboardRect = [aValue CGRectValue];
     keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
     
+    
+    //if disconnect , reconnect again
+    [self checkConnection];
+    
     [UIView beginAnimations:@"keyboardAnimation" context:nil];
     [UIView setAnimationDuration:0.4];
     CGRect frame = self.chatBox.frame;
@@ -65,6 +92,10 @@
     frame = self.logView.frame;
     frame.size.height = frame.size.height - keyboardRect.size.height;
     self.logView.frame = frame;
+    
+    frame = self.btnDisconnect.frame;
+    frame.origin.y = self.chatBox.frame.origin.y;
+    self.btnDisconnect.frame = frame;
     [UIView commitAnimations];
 }
 
@@ -88,14 +119,14 @@
     frame = self.logView.frame;
     frame.size.height = frame.size.height + keyboardRect.size.height;
     self.logView.frame = frame;
+    
+    frame = self.btnDisconnect.frame;
+    frame.origin.y = self.chatBox.frame.origin.y;
+    self.btnDisconnect.frame = frame;
     [UIView commitAnimations];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -18,12 +18,22 @@
 @interface tcpSocketChat : NSObject <GCDAsyncSocketDelegate>
 @property (nonatomic,assign) id<tcpSocketChatDelegate> delegate;
 
--(id)initWithDelegate:(id)delegateObject;
+-(id)initWithDelegate:(id)delegateObject AndSocketHost:(NSString*)host AndPort:(NSInteger)port;
 
 /**
  Send the message to TCP Chat Server
  */
 -(void)sendMessage:(NSString*)str;
 
+/**
+ Disconnect the current status
+ */
+-(void)disconnect;
+-(void)reconnect;
 
+/**
+ Diagnostics
+ */
+- (BOOL)isDisconnected;
+- (BOOL)isConnected;
 @end

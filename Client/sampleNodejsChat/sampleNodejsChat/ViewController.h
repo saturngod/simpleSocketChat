@@ -11,4 +11,6 @@
 @interface ViewController : UIViewController <tcpSocketChatDelegate , UITextFieldDelegate>
 @property (nonatomic,assign) IBOutlet UITextView* logView;
 @property (nonatomic,assign) IBOutlet UITextField* chatBox;
+@property (nonatomic,assign) IBOutlet UIButton* btnDisconnect;
+-(IBAction)disconnect:(id)sender;
 @end

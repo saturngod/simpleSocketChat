@@ -39,7 +39,7 @@ net.createServer(function (socket) {
     process.stdout.write(message)
   }
 
-}).listen(5100,"192.168.1.95");
+}).listen(5100,"192.168.1.49");
 
 // Put a friendly message on the terminal of the server.
 console.log("Chat server running at port 5100\n");
